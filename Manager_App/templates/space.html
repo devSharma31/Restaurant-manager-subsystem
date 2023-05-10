@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+
+{% block title %} Space Details {% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <h1>Space Details</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Number of Tables Available</th>
+            <th>Number of Seats Available</th>
+            <th>Parking Space</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in space %}
+          <tr>
+            <td>{{ s.name }}</td>
+            <td>{{ s.description }}</td>
+            <td>{{ s.image }}</td>
+            <td>{{ s.num_tables }}</td>
+            <td>{{ s.num_seats }}</td>
+            <td>{{ s.parking_spaces }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="7">No restaurant found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <a href="{% url 'admin:index' %}" class="btn btn-primary">Edit Staff Information</a>
+  </div>
+{% endblock %}

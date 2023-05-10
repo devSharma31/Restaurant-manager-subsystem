@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% block title %} Menu Details {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Menu</h1>
+<table class="table">
+        <thead>
+        <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        </tr>
+        </thead>
+  <tbody>
+    {% for menu in menus %}
+        <tr>
+        <td>{{ menu.name }}</td>
+        <td>{{ menu.description }}</td>
+        <td>{{ menu.price }}</td>
+        <td>
+        <img src="{{ menu.image.url }}" alt="{{ menu.name }}" width="100px" />
+        </td>
+        </tr>
+    {% empty %}
+        <tr>
+        <td colspan="7">No dishes available</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'admin:index' %}" class="btn btn-primary">Edit Menu Information</a>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+
+{% block title %} Restaurant Details {% endblock %}
+
+{% block body %}
+  <div class="container">
+    <h1>Restaurant Details</h1>
+    <table class="table">
+      <tbody>
+        {% for r in restaurants %}
+        <tr>
+          <th>Name:</th>
+          <td>{{ r.name }}</td>
+        </tr>
+        <tr>
+          <th>Opening Hours:</th>
+          <td>{{ r.opening_hours }}</td>
+        </tr>
+        <tr>
+          <th>Address:</th>
+          <td>{{ r.address }}</td>
+        </tr>
+        <tr>
+          <th>Cuisine Type:</th>
+          <td>{{ r.cuisine_type }}</td>
+        </tr>
+        <tr>
+          <th>Location:</th>
+          <td>{{ r.location }}</td>
+        </tr>
+        <tr>
+          <th>Directions:</th>
+          <td>{{ r.directions }}</td>
+        </tr>
+        <tr>
+          <th>Manager:</th>
+          <td>{{ r.manager.username }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h2>JSON Data</h2>
+    <pre>{{ json_data }}</pre>
+    <a href="{% url 'admin:index' %}" class="btn btn-primary">Edit Restaurant Information</a>
+  </div>
+{% endblock %}
